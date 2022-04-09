@@ -11,10 +11,10 @@
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 960:
+/***/ 36:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-var parse = __webpack_require__(565);
+var parse = __webpack_require__(805);
 
 module.exports = parseArray;
 
@@ -31,7 +31,7 @@ function parseArray(tokens) {
 
 /***/ }),
 
-/***/ 559:
+/***/ 837:
 /***/ ((module) => {
 
 let state, token, tokens, idx;
@@ -312,13 +312,13 @@ function fail(message) {
 
 /***/ }),
 
-/***/ 565:
+/***/ 805:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 module.exports = parser;
 
-const full_parse_expr = __webpack_require__(559),
-  Scope = __webpack_require__(669);
+const full_parse_expr = __webpack_require__(837),
+  Scope = __webpack_require__(816);
 
 // singleton!
 const Advance = new Object();
@@ -1431,7 +1431,7 @@ function is_precision(token) {
 
 /***/ }),
 
-/***/ 669:
+/***/ 816:
 /***/ ((module) => {
 
 module.exports = scope;
@@ -2558,16 +2558,13 @@ __webpack_require__.d(src_factory_namespaceObject, {
   "queue": () => (queue)
 });
 
-// NAMESPACE OBJECT: ./src/glsl/index.js
-var glsl_namespaceObject = {};
-__webpack_require__.r(glsl_namespaceObject);
-__webpack_require__.d(glsl_namespaceObject, {
-  "RETURN_ARG": () => (RETURN_ARG),
-  "SHADOW_ARG": () => (SHADOW_ARG),
+// NAMESPACE OBJECT: ./src/glsl/generate.js
+var generate_namespaceObject = {};
+__webpack_require__.r(generate_namespaceObject);
+__webpack_require__.d(generate_namespaceObject, {
   "body": () => (body),
   "build": () => (build),
   "call": () => (call),
-  "compile": () => (compile),
   "dedupe": () => (dedupe),
   "define": () => (generate_define),
   "defuse": () => (defuse),
@@ -2578,10 +2575,20 @@ __webpack_require__.d(glsl_namespaceObject, {
   "link": () => (generate_link),
   "links": () => (links),
   "list": () => (list),
-  "parse": () => (parse),
   "same": () => (same),
   "statements": () => (statements),
-  "unshadow": () => (unshadow),
+  "unshadow": () => (unshadow)
+});
+
+// NAMESPACE OBJECT: ./src/glsl/index.js
+var glsl_namespaceObject = {};
+__webpack_require__.r(glsl_namespaceObject);
+__webpack_require__.d(glsl_namespaceObject, {
+  "RETURN_ARG": () => (RETURN_ARG),
+  "SHADOW_ARG": () => (SHADOW_ARG),
+  "compile": () => (compile),
+  "generate": () => (generate_namespaceObject),
+  "parse": () => (parse),
   "walk": () => (walk)
 });
 
@@ -5831,8 +5838,8 @@ const string_compiler = function (code, placeholders) {
 // EXTERNAL MODULE: ./node_modules/glsl-tokenizer/string.js
 var string = __webpack_require__(932);
 var string_default = /*#__PURE__*/__webpack_require__.n(string);
-// EXTERNAL MODULE: ../glsl-parser/direct.js
-var direct = __webpack_require__(960);
+// EXTERNAL MODULE: ./node_modules/@sicmutils/glsl-parser/direct.js
+var direct = __webpack_require__(36);
 var direct_default = /*#__PURE__*/__webpack_require__.n(direct);
 ;// CONCATENATED MODULE: ./node_modules/three/src/math/Vector2.js
 class Vector2 {
@@ -10799,7 +10806,7 @@ const { Snippet: src_Snippet } = linker_namespaceObject;
 
 const src_merge = function (a, b = {}) {
   const out = {};
-  for (let key in a) {
+  for (const key in a) {
     out[key] = b[key] || a[key];
   }
   return out;
